@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Green Loan | Quick & Easy Loan Solutions</title>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__socials">
+      <a href="mailto:info@greenloan.com"><i class="ri-mail-fill"></i></a>
+      <a href="https://www.facebook.com/greenloan"><i class="ri-facebook-fill"></i></a>
+      <a href="https://www.linkedin.com/company/greenloan"><i class="ri-linkedin-fill"></i></a>
+    </div>
+    <nav>
+      <div class="nav__bar">
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="#">Green Loan<span>.</span></a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <span><i class="ri-menu-3-line"></i></span>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li class="link"><a href="#home">Home</a></li>
+          <li class="link"><a href="#about">About Us</a></li>
+          <li class="link"><a href="#services">Services</a></li>
+          <li class="link"><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="section__container header__container" id="home">
+      <div class="header__image">
+        <img src="assets/money1.jpg" alt="header" />
+      </div>
+      <h1>Welcome to Green Loan – Your Trusted Loan Partner!</h1>
+      <h4>Simple, Fast & Reliable</h4>
+      <p>We offer quick and affordable loans with an industry-leading 39.99% interest rate and approval in under 24 hours. Whether you're looking to borrow, invest, or learn about financial growth, Green Loan is here to guide you every step of the way.</p>
+    </div>
+  </header>
+
+   </header>
+
+  <section class="section__container about__container" id="about">
+    <div class="about__content">
+      <h2 class="section__header">About Green Loan</h2>
+      <p>Green Loan is committed to providing fast and easy financial solutions. Our streamlined loan approval process ensures you get the funds you need, when you need them. With over a decade of expertise in personal loans, investments, and financial education, we're here to support your financial growth.</p>
+      <h4>Your success is our priority, and we’re dedicated to offering you quick access to funds, top-tier financial education, and high-value investment opportunities.</h4>
+    </div>
+  </section>
+<!-- Loader -->
+<div id="loader" style="display:none;">
+  <div class="loader"></div>
+</div>
+
+  <section class="section__container service__container" id="services">
+    <p class="section__subheader">Our Services</p>
+    <h2 class="section__header">What We Offer</h2>
+    <div class="service__grid">
+      <!-- Personal Loans Service Card -->
+      <div class="service__card service__card--personal-loan" id="personal-loan-card">
+        <span><i class="ri-money-dollar-circle-line"></i></span>
+        <div class="service__content">
+          <h4>Personal Loans</h4>
+          <p>Get a personal loan with a low 39.99% interest rate, approved in under 24 hours. Flexible options available to suit your needs.</p>
+        </div>
+        <img src="assets/loan1.jpg" alt="Personal Loans" class="service__background" />
+      </div>
+
+      <!-- Investment Opportunities Service Card -->
+      <div class="service__card service__card--investment" id="investment-card">
+     <span><i class="ri-line-chart-line"></i></span>
+     <div class="service__content">
+      <h4>Investment Opportunities</h4>
+     <p>Grow your wealth with our trusted investment plans. Choose from a range of options to maximize your returns.</p>
+     </div>
+     <img src="assets/investment.jpg" alt="Investment Opportunities" class="service__background" />
+    </div>
+
+
+
+      <!-- Interest Calculator Service Card -->
+      <div class="service__card service__card--calculator" id="calculator-card">
+        <span><i class="ri-calculator-line"></i></span>
+        <div class="service__content">
+          <h4>Interest Calculator</h4>
+          <p>Use our easy-to-use calculator to estimate your loan repayment and interest based on different borrowing amounts.</p>
+        </div>
+        <img src="assets/calc.png" alt="Interest Calculator" class="service__background" />
+      </div>
+
+
+
+         <!-- Financial Education Service Card -->
+<div class="service__card service__card--education">
+  <a href="assets/finance.pdf" download>
+    <span><i class="ri-book-line"></i></span>
+    <div class="service__content">
+      <h4>Financial Education</h4>
+      <p>Access valuable resources to learn more about managing finances, investing, and maximizing your loan benefits.</p>
+    </div>
+    <img src="assets/edu.png" alt="Financial Education" class="service__background" />
+  </a>
+</div>
+
+    </div>
+  </section>
+
+  <section class="section__container contact__container" id="contact">
+    <p class="section__subheader">Contact Us</p>
+    <h2 class="section__header">Get in Touch</h2>
+    <p>Whatsapp/Call: +27647375926</p>
+    <p>Email: <a href="clintonbonganikhoza@gmail.com">clintonbonganikhoza@gmail.com</a></p>
+  </section>
+
+
+  <section class="section__container loan__application" id="loan-application">
+    <h2 class="section__header">Apply for a Loan</h2>
+    <form id="loanApplicationForm">
+  <div class="form__group">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required />
+  </div>
+  <div class="form__group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
+  </div>
+  <div class="form__group">
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required />
+  </div>
+  <div class="form__group">
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address" required />
+  </div>
+
+  <!-- New fields added -->
+  <div class="form__group">
+    <label for="idNumber">ID Number</label>
+    <input type="text" id="idNumber" name="idNumber" required />
+  </div>
+  <div class="form__group">
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" name="dob" required />
+  </div>
+  <div class="form__group">
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" required>
+      <option value="" disabled selected>Select your gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div class="form__group">
+    <label for="amount">Amount</label>
+    <input type="number" id="amount" name="amount" required />
+  </div>
+  <div class="form__group">
+    <label for="purpose">Purpose</label>
+    <select id="purpose" name="purpose" required>
+      <option value="personal">Personal</option>
+      <option value="business">Business</option>
+      <option value="education">Education</option>
+      <option value="medical">Medical</option>
+    </select>
+  </div>
+  <div class="form__group">
+    <label for="dueDate">Due Date</label>
+    <input type="date" id="dueDate" name="dueDate" required />
+  </div>
+  <div class="form__group">
+    <label for="bank">Bank Name</label>
+    <select id="bank" name="bank" required>
+      <option value="fnb">FNB</option>
+      <option value="capitec">Capitec</option>
+      <option value="nedbank">Nedbank</option>
+      <option value="standard-bank">Standard Bank</option>
+    </select>
+  </div>
+  <div class="form__group">
+    <label for="account-number">Account Number</label>
+    <input type="text" id="account-number" name="account-number" required />
+  </div>
+  <div class="form__group">
+    <label for="bankStatement">3 Months Bank Statement</label>
+    <input type="file" id="bankStatement" name="bankStatement" accept=".pdf,.jpg,.png" required />
+  </div>
+  <div class="form__group">
+    <label for="idPicture">ID Picture</label>
+    <input type="file" id="idPicture" name="idPicture" accept=".jpg,.png,.jpeg" required />
+  </div>
+  <button type="button" onclick="sendLoanApplication()">Submit Application</button>
+</form>
+
+  </section>
+
+  <!-- Loader -->
+  <div id="loader" style="display:none;">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Success Popup -->
+  <div id="success-popup" class="popup" style="display:none;">
+    <p id="success-message"style="color: black;">Loan Application Submitted Successfully!</p>
+    <p>Please send your bank statement via email(clintonbonganikhoza@gmail.com)</p>
+    <button onclick="closeSuccessPopup()">Close</button>
+  </div>
+
+    <footer class="footer">
+    <div class="section__container footer__container">
+      <div class="footer__col">
+        <h5><a href="#">Green Loan</a></h5>
+        <p>Your reliable partner for quick, hassle-free loan services and investment opportunities.</p>
+        <div class="footer__socials">
+          <a href="mailto:clintonbonganikhoza@gmail.com"><i class="ri-mail-fill"></i></a>
+          <a href="https://www.facebook.com/MiguelSalbonton"><i class="ri-facebook-fill"></i></a>
+          <a href="https://linkedin.com/company/greenloan"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://twitter.com/greenloan"><i class="ri-twitter-fill"></i></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <div class="footer__links">
+          <a href="#services">Our Services</a>
+          <a href="#about">About Us</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <div class="footer__links">
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script>
+      document.getElementById("investment-card").addEventListener("click", function() {
+         window.location.href = "login.html";
+       });
+
+     document.getElementById("calculator-card").addEventListener("click", function() {
+         window.location.href = "calculator.html";
+       });
+
+
+      document.getElementById("personal-loan-card").addEventListener("click", function() {
+      var loanApplicationForm = document.getElementById("loan-application");
+      loanApplicationForm.style.display = "block";
+      loanApplicationForm.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCWoEdf5p3T8DfJX3IWw3s6PNWKjXdo9-s",
+      authDomain: "robot-1ed2b.firebaseapp.com",
+      databaseURL: "https://robot-1ed2b-default-rtdb.firebaseio.com/",
+      projectId: "robot-1ed2b",
+      storageBucket: "robot-1ed2b.appspot.com",
+      messagingSenderId: "71843575877",
+      appId: "1:71843575877:android:61b8b09dc5bf5d21158b2c",
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const dbRef = firebase.database().ref("loan_applications");
+
+    function sendLoanApplication() {
+   const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const idNumber = document.getElementById("idNumber").value;
+  const dob = document.getElementById("dob").value;
+  const gender = document.getElementById("gender").value;
+  const amount = document.getElementById("amount").value;
+  const purpose = document.getElementById("purpose").value;
+  const dueDate = document.getElementById("dueDate").value;
+  const bank = document.getElementById("bank").value;
+  const accountNumber = document.getElementById("account-number").value;
+
+      // File inputs
+      const bankStatement = document.getElementById("bankStatement").files[0];
+      const idPicture = document.getElementById("idPicture").files[0];
+
+      if (name && email && phone && bank && accountNumber && bankStatement && idPicture) {
+        const application = {
+           name,
+           email,
+           phone,
+           address,
+           idNumber,
+           dob,
+           gender,
+           amount,
+           purpose,
+          dueDate,
+           bank,
+          accountNumber,
+          timestamp: new Date().toISOString(),
+        };
+
+        dbRef.push(application, (error) => {
+          if (error) {
+            alert("Error submitting application. Please try again.");
+          } else {
+            document.getElementById("loanApplicationForm").reset();
+            document.getElementById("success-popup").style.display = "block";
+          }
+        });
+      } else {
+        alert("Please fill out all fields and upload required documents.");
+      }
+    }
+
+    function closeSuccessPopup() {
+      document.getElementById("success-popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>

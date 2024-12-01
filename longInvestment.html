@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add an Investor</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0e0e0;
+      color: #444;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header Styles */
+    h1 {
+      text-align: center;
+      color: #444;
+      margin-top: 40px;
+    }
+
+    /* Form Styles */
+    form {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: #f5f5f5;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #388E3C;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2C6B2F;
+    }
+
+    /* Loader Style */
+    #loader {
+      display: none;
+      font-size: 20px;
+      color: #fff;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    /* Success/Error Message */
+    .message {
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .success {
+      background-color: #388E3C;
+      color: white;
+    }
+
+    .error {
+      background-color: #f44336;
+      color: white;
+    }
+
+    /* Pop-up Style for Success */
+    #success-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #388E3C;
+      padding: 20px;
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+      text-align: center;
+    }
+
+    #success-popup button {
+      background-color: #fff;
+      color: #388E3C;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    #success-popup button:hover {
+      background-color: #45a049;
+      color: white;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 600px) {
+      form {
+        padding: 20px;
+        margin: 10px;
+      }
+
+      input, select {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Register Yourself as Investor</h1>
+
+  <!-- Form for collecting investor details -->
+  <form>
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required><br>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" required><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required><br>
+
+    <label for="amountToInvest">Amount to Invest:</label>
+    <input type="number" id="amountToInvest" name="amountToInvest" min="0" step="0.01" required><br>
+
+    <label for="investmentPeriod">Investment Period:</label>
+    <input type="text" id="investmentPeriod" name="investmentPeriod" value="6 months" readonly><br>
+
+    <label for="interestRate">Interest Rate (50%):</label>
+    <input type="text" id="interestRate" name="interestRate" value="50%" readonly><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <!-- New Fields -->
+    <label for="accountNumber">Account Number:</label>
+    <input type="text" id="accountNumber" name="accountNumber" required><br>
+
+    <label for="accountName">Account Name:</label>
+    <input type="text" id="accountName" name="accountName" required><br>
+
+    <label for="bankName">Bank Name:</label>
+    <select id="bankName" name="bankName" required>
+      <option value="FNB">FNB</option>
+      <option value="CAPITEC">CAPITEC</option>
+      <option value="NEDBANK">NEDBANK</option>
+      <option value="STANDARD BANK">STANDARD BANK</option>
+      <option value="ABSA">ABSA</option>
+    </select><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select><br>
+
+    <label for="homeAddress">Home Address:</label>
+    <input type="text" id="homeAddress" name="homeAddress" required><br>
+
+    <label for="cellphone">Cellphone Number:</label>
+    <input type="tel" id="cellphone" name="cellphone" required><br>
+
+    <label for="province">Province:</label>
+    <select id="province" name="province" required>
+      <option value="Eastern Cape">Eastern Cape</option>
+      <option value="Free State">Free State</option>
+      <option value="Gauteng">Gauteng</option>
+      <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+      <option value="Limpopo">Limpopo</option>
+      <option value="Mpumalanga">Mpumalanga</option>
+      <option value="Northern Cape">Northern Cape</option>
+      <option value="North West">North West</option>
+      <option value="Western Cape">Western Cape</option>
+    </select><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Loader element -->
+  <div id="loader">Loading...</div>
+
+  <!-- Success/Error Message -->
+  <div id="message" class="message"></div>
+
+  <!-- Success Pop-up -->
+  <div id="success-popup">
+    Investor registered successfully!
+    <br>Please send your investment to account number: 1597273110.
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCWoEdf5p3T8DfJX3IWw3s6PNWKjXdo9-s",
+      authDomain: "robot-1ed2b.firebaseapp.com",
+      databaseURL: "https://robot-1ed2b-default-rtdb.firebaseio.com",
+      projectId: "robot-1ed2b",
+      storageBucket: "robot-1ed2b.appspot.com",
+      messagingSenderId: "71843575877",
+      appId: "1:71843575877:android:61b8b09dc5bf5d21158b2c",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    const form = document.querySelector("form");
+    const loader = document.getElementById("loader");
+    const successPopup = document.getElementById("success-popup");
+
+    // Function to sanitize email for Firebase path
+    function sanitizeEmail(email) {
+      return email.replace(/[.#$[\]]/g, '_');
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const fullName = form.fullName.value.trim();
+      const address = form.address.value.trim();
+      const dob = form.dob.value;
+      const amountToInvest = parseFloat(form.amountToInvest.value);
+      const investmentPeriod = form.investmentPeriod.value;
+      const interestRate = form.interestRate.value;
+      const email = form.email.value.trim();
+      const accountNumber = form.accountNumber.value.trim();
+      const accountName = form.accountName.value.trim();
+      const bankName = form.bankName.value.trim();
+      const gender = form.gender.value;
+      const homeAddress = form.homeAddress.value.trim();
+      const cellphone = form.cellphone.value.trim();
+      const province = form.province.value.trim();
+
+      // Show loader
+      loader.style.display = "block";
+
+      try {
+        const emailPath = sanitizeEmail(email);
+        await set(ref(database, "investors/" + emailPath), {
+          fullName,
+          address,
+          dob,
+          amountToInvest,
+          investmentPeriod,
+          interestRate,
+          email,
+          accountNumber,
+          accountName,
+          bankName,
+          gender,
+          homeAddress,
+          cellphone,
+          province,
+        });
+
+        // Hide loader and show success popup
+        loader.style.display = "none";
+        successPopup.style.display = "block";
+      } catch (error) {
+        // Handle error
+        loader.style.display = "none";
+        document.getElementById("message").classList.add("error");
+        document.getElementById("message").innerText = "Error registering investor: " + error.message;
+        document.getElementById("message").style.display = "block";
+      }
+    });
+
+    function closePopup() {
+      successPopup.style.display = "none";
+    }
+  </script>
+</body>
+</html>

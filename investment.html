@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Investment Opportunities | Green Loan</title>
+  <style>
+    /* Add custom styles for the profile icon and dropdown */
+    .profile__container {
+      position: relative;
+      display: inline-block;
+      margin-left: auto;
+    }
+   
+  .profile__icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: transform 0.3s ease; /* Smooth animation */
+  }
+
+  .profile__icon:hover {
+    transform: scale(1.2); /* Slightly increase the size */
+  }
+    .profile__icon {
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .profile__dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .profile__dropdown a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .profile__dropdown a:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav>
+      <div class="nav__bar">
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="#">Green Loan<span>.</span></a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <span><i class="ri-menu-3-line"></i></span>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li class="link"><a href="index.html">Home</a></li>
+          </ul>
+        <!-- Profile Icon Container -->
+        <div class="profile__container">
+          <i class="ri-user-line profile__icon" id="profile-icon"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="section__container">
+    <h1>Investment Opportunities</h1>
+    <p>Explore a variety of investment plans designed to maximize your returns and secure your financial future.</p>
+    <section class="section__container service__container" id="investment-plans">
+      <p class="section__subheader">Our Investment Plans</p>
+      <h2 class="section__header">Explore Opportunities</h2>
+      <div class="service__grid">
+        <!-- Long Investment Service Card -->
+        <div class="service__card service__card--long-investment" id="long-investment-card">
+          <span><i class="ri-time-line"></i></span>
+          <div class="service__content">
+            <h4>Long Investment</h4>
+            <p>Ideal for those looking for stable and long-term growth. Invest in reliable opportunities with guaranteed returns.</p>
+          </div>
+          <img src="assets/investor.jpg" alt="Long Investment" class="service__background" />
+        </div>
+        <!-- Stokvela Service Card -->
+        <div class="service__card service__card--stokvela" id="stokvela-card">
+          <span><i class="ri-group-line"></i></span>
+          <div class="service__content">
+            <h4>Stokvela</h4>
+            <p>A community-driven investment plan. Pool resources with others and grow your wealth together effectively.</p>
+          </div>
+          <img src="assets/moneycycle.jpg" alt="Stokvela" class="service__background" />
+        </div>
+        <!-- High Stake Service Card -->
+        <div class="service__card service__card--high-stake" id="high-stake-card">
+          <span><i class="ri-line-chart-line"></i></span>
+          <div class="service__content">
+            <h4>High Stake</h4>
+            <p>For seasoned investors seeking higher returns. Take calculated risks with expert guidance to maximize profits.</p>
+          </div>
+          <img src="assets/high.jpg" alt="High Stake" class="service__background" />
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <footer class="footer">
+    <div class="section__container footer__container">
+      <!-- Footer Content -->
+    </div>
+  </footer>
+
+  <script>
+    // Toggle the profile dropdown
+    const profileIcon = document.getElementById('profile-icon');
+    const profileDropdown = document.getElementById('profile-dropdown');
+
+    profileIcon.addEventListener('click', function () {
+      profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Redirect to login.html when a card is clicked
+    document.getElementById('long-investment-card').addEventListener('click', function () {
+      window.location.href = 'login.html';
+    });
+
+    document.getElementById('stokvela-card').addEventListener('click', function () {
+      window.location.href = 'stokvela.html';
+    });
+
+    document.getElementById('high-stake-card').addEventListener('click', function () {
+      window.location.href = 'login.html';
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (event) {
+      if (!profileIcon.contains(event.target) && !profileDropdown.contains(event.target)) {
+        profileDropdown.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

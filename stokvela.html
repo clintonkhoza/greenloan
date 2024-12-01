@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Stokvela | Green Loan</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Black with transparency */
+  overflow: auto;
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.close-btn {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+    .header {
+      background-color: #222;
+      color: white;
+      padding: 20px 0;
+    }
+
+    .nav__bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav__logo a {
+      color: #fff;
+      font-size: 24px;
+      text-decoration: none;
+    }
+
+    .section__container {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .section__container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .profile-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 250px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 2px solid #4caf50;
+    }
+
+    .profile-card h3 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .profile-card p {
+      font-size: 0.9rem;
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .profile-card .user-number {
+      font-weight: bold;
+      color: #444;
+    }
+
+    .profile-card button {
+      padding: 5px 10px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .delete-btn {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .add-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    #pagination {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    #pagination button {
+      font-size: 16px;
+      padding: 8px 12px;
+      margin: 0 5px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #pagination button:hover {
+      background-color: #666;
+      transform: scale(1.1);
+    }
+
+    #pagination button.active {
+      background-color: #4caf50;
+    }
+
+    /* Progress Bar Styles */
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-bar .progress {
+      height: 100%;
+      background-color: #4caf50;
+      border-radius: 5px;
+    }
+
+    .progress-bar span {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #fff;
+      line-height: 10px;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="nav__bar">
+      <div class="nav__logo">
+         <a href="investment.html">Stokvela</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section__container">
+    <h1>Stokvela Members</h1>
+    <div id="profileGrid" class="profile-grid"></div>
+    <div id="pagination"></div>
+  </div>
+
+  <!-- Modal for displaying account details -->
+<div id="accountModal" style="display: none;" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>Account Details</h2>
+    <p>Account Number: 1696619554</p>
+    <p>Account Name: CAPITEC</p>
+    <p>Admin:Clintonbonganikhoza@gmail.com</p>
+  </div>
+</div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getDatabase, ref, get, child, remove } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCWoEdf5p3T8DfJX3IWw3s6PNWKjXdo9-s",
+      authDomain: "robot-1ed2b.firebaseapp.com",
+      databaseURL: "https://robot-1ed2b-default-rtdb.firebaseio.com",
+      projectId: "robot-1ed2b",
+      storageBucket: "robot-1ed2b.appspot.com",
+      messagingSenderId: "71843575877",
+      appId: "1:71843575877:android:61b8b09dc5bf5d21158b2c",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    const profilesPerPage = 4;
+    let currentPage = 1;
+    let profiles = [];
+
+    // Fetch profiles from Firebase
+    async function fetchProfiles() {
+      const dbRef = ref(database);
+      try {
+        const memberReceivingSnapshot = await get(child(dbRef, "memberReceiving/0000000000"));
+        const memberReceiving = memberReceivingSnapshot.exists() ? memberReceivingSnapshot.val() : null;
+
+        if (memberReceiving) {
+          const hardcodedCard = {
+            id: "0000000000",  // Add an id property for the member
+            name: memberReceiving.fullName || "Unknown",
+            img: "assets/next.jpg",
+            role: "Community Investor",
+            userNumber: "#1",
+            amountReceived: parseFloat(memberReceiving.amount) || 0,
+            totalAmountToReceive: parseFloat(memberReceiving.totalAmount) || 0,
+            isHardcoded: true,
+          };
+
+          const snapshot = await get(child(dbRef, "stokvelaMembers"));
+          if (snapshot.exists()) {
+            profiles = [
+              hardcodedCard,
+              ...Object.entries(snapshot.val()).map(([id, member], index) => ({
+                id,  // Capture the ID of each member
+                name: member.fullName || "Unknown",
+                img: "assets/user1.jpg",
+                role: "Community Investor",
+                userNumber: `#${index + 2}`,
+                amountPaid: parseFloat(member.amount) || 0,
+                isHardcoded: false,
+              })),
+            ];
+
+            // Calculate the total amount received by summing the "Amount Paid" values
+            const totalAmountPaid = profiles.reduce((sum, profile) => sum + (profile.amountPaid || 0), 0);
+
+            // Update the amountReceived for all profiles
+            profiles.forEach(profile => {
+              profile.amountReceived = totalAmountPaid;
+            });
+
+            displayProfiles(currentPage);
+            setupPagination();
+          } else {
+            document.getElementById("profileGrid").innerHTML = `<p>No profiles found.</p>`;
+          }
+        } else {
+          console.error("No member receiving data found.");
+          document.getElementById("profileGrid").innerHTML = `<p>Member receiving data not found.</p>`;
+        }
+      } catch (error) {
+        console.error("Error fetching profiles:", error);
+        document.getElementById("profileGrid").innerHTML = `<p>Failed to fetch profiles.</p>`;
+      }
+    }
+
+    // Display profiles for the current page
+// Display profiles for the current page
+function displayProfiles(page) {
+  const startIndex = (page - 1) * profilesPerPage;
+  const endIndex = startIndex + profilesPerPage;
+  const profilesToDisplay = profiles.slice(startIndex, endIndex);
+
+  const profileGrid = document.getElementById("profileGrid");
+  profileGrid.innerHTML = profilesToDisplay
+    .map((profile, index) => {
+      const progress = profile.isHardcoded ? (profile.amountReceived / profile.totalAmountToReceive) * 100 : 0;
+
+      return `
+        <div class="profile-card" id="card-${profile.id}">
+          <img src="${profile.img}" alt="Profile Image" />
+          <h3>${profile.name}</h3>
+          <p>${profile.role}</p>
+          <p class="user-number">${profile.userNumber}</p>
+          <p>${profile.isHardcoded ? `Amount Received: ${profile.amountReceived}` : ''}</p>
+          <p>${profile.isHardcoded ? `Amount to Receive: ${profile.totalAmountToReceive}` : ''}</p>
+          ${profile.isHardcoded ? `
+            <div class="progress-bar">
+              <div class="progress" style="width: ${progress}%;"></div>
+              <span>${progress.toFixed(2)}%</span>
+            </div>
+          ` : ''}
+          <p>${!profile.isHardcoded && profile.amountPaid ? `Amount Paid: R${profile.amountPaid.toFixed(2)}` : ''}</p>
+        </div>
+      `;
+    })
+    .join("");
+
+  // Add click event to the first card to show modal
+  const firstCard = document.getElementById("card-0000000000");
+  if (firstCard) {
+    firstCard.addEventListener("click", function () {
+      const modal = document.getElementById("accountModal");
+      modal.style.display = "block";
+    });
+  }
+
+  // Close modal when clicking the close button
+  const closeBtn = document.querySelector(".close-btn");
+  closeBtn.addEventListener("click", function () {
+    const modal = document.getElementById("accountModal");
+    modal.style.display = "none";
+  });
+
+  // Close modal if user clicks outside of it
+  window.addEventListener("click", function (event) {
+    const modal = document.getElementById("accountModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+}
+
+
+    // Setup pagination
+  function setupPagination() {
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = "";
+    const totalPages = Math.ceil(profiles.length / profilesPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const button = document.createElement("button");
+      button.textContent = i;
+      if (i === currentPage) button.classList.add("active");
+      button.addEventListener("click", () => {
+        currentPage = i;
+        displayProfiles(i);
+        setupPagination();
+      });
+      pagination.appendChild(button);
+    }
+  }
+
+  // Delete member from Firebase
+  async function deleteMember(memberId) {
+    const dbRef = ref(database, `stokvelaMembers/${memberId}`);
+    try {
+      await remove(dbRef);  // Delete the member from the database
+      alert("Member deleted successfully!");
+      fetchProfiles();  // Re-fetch profiles to update the display
+    } catch (error) {
+      console.error("Error deleting member:", error);
+      alert("Failed to delete member.");
+    }
+  }
+
+    // Initialize data
+    fetchProfiles();
+  </script>
+</body>
+</html>
+
